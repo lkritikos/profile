@@ -32,7 +32,7 @@ export interface Typography {
     heading: string
     mono: string
   }
-  scale: Record<'h1' | 'h2' | 'body' | 'label', TypeStyle>
+  scale: Record<'h1' | 'h2' | 'h3' | 'body' | 'label', TypeStyle>
 }
 
 export const typography: Typography = {
@@ -52,6 +52,12 @@ export const typography: Typography = {
       size: 'clamp(1.3125rem, 1.15rem + 0.7vw, 1.625rem)',
       weight: 600,
       leading: '1.2',
+      tracking: '-0.01em',
+    },
+    h3: {
+      size: 'clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem)',
+      weight: 600,
+      leading: '1.3',
       tracking: '-0.01em',
     },
     body: {

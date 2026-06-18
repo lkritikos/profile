@@ -42,6 +42,14 @@ h2 {
   color: var(--text-strong);
 }
 
+/* Sub-headings (card titles) use the body sans, semibold — the display face
+ * (Space Grotesk) is reserved for section-level h1/h2 so the hierarchy stays
+ * clear and section headings keep their "landmark" weight. */
+h3 {
+  font-family: var(--sans);
+  color: var(--text-strong);
+}
+
 h1 {
   font-size: var(--fs-h1);
   font-weight: var(--fw-h1);
@@ -59,6 +67,14 @@ h2 {
   line-height: var(--lh-h2);
   letter-spacing: var(--ls-h2);
   margin: 0 0 16px;
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+  margin: 0;
 }
 
 p {
