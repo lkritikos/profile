@@ -2,10 +2,13 @@
  * Layout for the single-page profile: full-bleed sections (backgrounds reach
  * the viewport edges) with an inner `.container` that caps and centers content.
  * All colors come from theme tokens (var(--token)); never hardcode hex here.
- *
- * Button affordance convention (carried from the Step 2 preview):
- *   primary = filled, secondary = outlined — both always read as clickable.
  */
+
+/* #root is a flex column (index.css); let <main> grow so the footer is pinned
+ * to the bottom even when the page content is short. */
+main {
+  flex: 1 0 auto;
+}
 
 /* Smooth in-page anchor scrolling; offset so sticky-nav doesn't cover headings. */
 html {
@@ -69,15 +72,24 @@ html {
 }
 
 .nav-brand {
-  font-family: var(--heading);
-  font-weight: 600;
-  font-size: 18px;
-  color: var(--text-strong);
+  display: inline-flex;
   text-decoration: none;
+  border-radius: 9px;
 }
 
-.nav-brand:hover {
-  color: var(--accent);
+/* "LK" monogram brand mark — shared by the nav and footer. */
+.monogram {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--heading);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.5px;
 }
 
 .nav-links {
@@ -98,6 +110,35 @@ html {
   color: var(--accent);
 }
 
+/* Right cluster: GitHub/LinkedIn + theme toggle. */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Ghost icon buttons (social links + theme toggle) — light, consistent set. */
+.nav-icon,
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-icon:hover,
+.theme-toggle:hover {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
 @media (max-width: 600px) {
   .nav-links {
     gap: 14px;
@@ -108,8 +149,13 @@ html {
 /* ---- Sections ------------------------------------------------------------ */
 
 .section {
-  padding-block: 72px;
+  padding-block: 56px;
   border-top: 1px solid var(--border);
+}
+
+/* Alternating surface gives the page color rhythm without extra chrome. */
+.section--alt {
+  background: var(--surface);
 }
 
 .muted {
@@ -119,44 +165,67 @@ html {
 /* ---- Hero ---------------------------------------------------------------- */
 
 .hero {
-  padding-block: 96px 80px;
+  position: relative;
+  overflow: hidden;
+  padding-block: 44px 72px;
+}
+
+/* Twin teal glows (top corners) — visual interest, esp. in the flatter dark
+ * mode, without literal ornamentation. */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(55% 70% at 0% -10%, var(--accent-soft), transparent 60%),
+    radial-gradient(45% 55% at 100% 0%, var(--accent-soft), transparent 70%);
+  pointer-events: none;
+}
+
+.hero .container {
+  position: relative;
 }
 
 .hero h1 {
-  margin: 12px 0 8px;
+  margin: 28px 0 0;
 }
 
 .hero-tagline {
   font-size: 22px;
+  line-height: 1.35;
   color: var(--text-strong);
-  margin-bottom: 16px;
+  margin: 12px 0 0;
+  max-width: 40ch;
 }
 
 .hero-intro {
+  margin-top: 16px;
   max-width: 60ch;
   color: var(--text);
 }
 
 @media (max-width: 1024px) {
   .hero {
-    padding-block: 64px 56px;
+    padding-block: 32px 56px;
   }
   .hero-tagline {
     font-size: 19px;
   }
   .section {
-    padding-block: 56px;
+    padding-block: 48px;
   }
 }
 
-/* "Currently" pill. */
+/* "Currently" pill — monospace label for an engineered feel. */
 .pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 6px 14px;
   border-radius: 999px;
-  font-size: 14px;
+  font-family: var(--mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.2px;
   color: var(--accent);
   background: var(--accent-soft);
   border: 1px solid var(--accent-border);
@@ -170,96 +239,83 @@ html {
   background: var(--accent);
 }
 
-/* ---- Buttons ------------------------------------------------------------- */
+/* ---- Section headings ---------------------------------------------------- */
 
-.hero-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 28px;
+/* Short teal accent bar under each section heading — consistent design
+ * language that adds color rhythm without needing extra copy. */
+.section-title {
+  position: relative;
+  padding-bottom: 14px;
+  margin-bottom: 20px;
 }
 
-.btn {
-  font: inherit;
-  font-weight: 500;
-  padding: 11px 20px;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  text-decoration: none;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-}
-
-.btn-primary {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--on-accent);
-}
-
-.btn-primary:hover {
-  background: var(--accent-strong);
-  border-color: var(--accent-strong);
-  color: var(--on-accent);
-}
-
-.btn-outline {
-  background: transparent;
-  border-color: var(--accent-border);
-  color: var(--accent);
-}
-
-.btn-outline:hover {
-  border-color: var(--accent);
-  background: var(--accent-soft);
-  color: var(--accent);
-}
-
-/* ---- Body copy spacing --------------------------------------------------- */
-
-.section p + p,
-.hero-intro {
-  margin-top: 14px;
-}
-
-/* ---- Theme toggle (moved from the interim preview shell) ----------------- */
-
-.theme-toggle {
-  display: inline-grid;
-  place-items: center;
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
   width: 40px;
-  height: 40px;
-  flex: none;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--text-strong);
-  cursor: pointer;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--accent);
 }
 
-.theme-toggle:hover {
-  border-color: var(--accent-border);
-  color: var(--accent);
-}
+/* ---- Tech chips ---------------------------------------------------------- */
 
-/* ---- Footer / contact ---------------------------------------------------- */
-
-.footer {
-  padding-block: 64px;
-  border-top: 1px solid var(--border);
-  background: var(--surface);
-}
-
-.contact-links {
+.chips {
   display: flex;
-  gap: 20px;
-  margin: 16px 0 0;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0 0;
   padding: 0;
   list-style: none;
 }
 
-.footer-note {
-  margin-top: 28px;
+.chip {
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: var(--fs-label);
+  color: var(--text-strong);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.section--alt .chip {
+  background: var(--bg);
+}
+
+/* ---- Body copy spacing & measure ----------------------------------------- */
+
+/* Cap reading width so lines stay ~60-75ch (long lines hurt readability). */
+.section p {
+  max-width: 65ch;
+}
+
+.section p + p {
+  margin-top: 16px;
+}
+
+/* ---- Footer -------------------------------------------------------------- */
+
+.footer {
+  flex: none;
+  padding-block: 22px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
   color: var(--text-muted);
-  font-size: 15px;
+  font-family: var(--mono);
+  font-size: var(--fs-label);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  flex-wrap: wrap;
+}
+
+.footer-meta {
+  color: var(--text-muted);
 }

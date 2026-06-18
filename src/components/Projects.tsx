@@ -6,7 +6,7 @@ export function Projects() {
   return (
     <section id="projects" className="section">
       <div className="container">
-        <h2>Projects</h2>
+        <h2 className="section-title">Projects</h2>
         <p className="muted">Projects coming soon.</p>
       </div>
     </section>

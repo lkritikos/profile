@@ -4,7 +4,7 @@ import './index.css'
 import { installTheme } from './theme/createTheme.ts'
 import App from './App.tsx'
 
-// Compile the typed palette into CSS variables before first paint.
+// Compile the typed palette + typography into CSS variables before first paint.
 installTheme()
 
 createRoot(document.getElementById('root')!).render(

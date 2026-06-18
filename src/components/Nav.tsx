@@ -1,16 +1,20 @@
 import { ThemeToggle } from './ThemeToggle.tsx'
-import { profile } from '../data/profile.ts'
+import { GitHubIcon, LinkedInIcon } from './icons.tsx'
+import { profile, initials } from '../data/profile.ts'
 
 /**
- * Sticky banner: brand, in-page anchor links (smooth-scroll via CSS), and the
- * theme toggle. Full-bleed background; inner content is capped by `.container`.
+ * Sticky banner: monogram brand, in-page anchor links, and the right cluster
+ * (GitHub/LinkedIn + theme toggle). The header is the single, always-visible
+ * home for the social links — so they're not repeated in the hero or footer.
  */
 export function Nav() {
   return (
     <header className="nav">
       <div className="container nav-inner">
-        <a className="nav-brand" href="#top">
-          {profile.name}
+        <a className="nav-brand" href="#top" aria-label={`${profile.name} — home`}>
+          <span className="monogram" aria-hidden="true">
+            {initials}
+          </span>
         </a>
         <nav aria-label="Primary">
           <ul className="nav-links">
@@ -20,12 +24,29 @@ export function Nav() {
             <li>
               <a href="#projects">Projects</a>
             </li>
-            <li>
-              <a href="#contact">Contact</a>
-            </li>
           </ul>
         </nav>
-        <ThemeToggle />
+        <div className="nav-actions">
+          <a
+            className="nav-icon"
+            href={profile.links.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <GitHubIcon />
+          </a>
+          <a
+            className="nav-icon"
+            href={profile.links.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <LinkedInIcon />
+          </a>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   )

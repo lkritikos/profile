@@ -1,8 +1,9 @@
 import { profile } from '../data/profile.ts'
 
 /**
- * Landing section: name, tagline, intro, the "Currently" pill, and the two
- * profile links (GitHub = primary/filled, LinkedIn = secondary/outlined).
+ * Landing section: name, tagline, intro, and the "Currently" status pill.
+ * Social links live in the sticky header (always visible), so the hero stays
+ * clean text — in line with current minimalist portfolio practice.
  */
 export function Hero() {
   return (
@@ -12,24 +13,6 @@ export function Hero() {
         <h1>{profile.name}</h1>
         <p className="hero-tagline">{profile.tagline}</p>
         <p className="hero-intro">{profile.intro}</p>
-        <div className="hero-actions">
-          <a
-            className="btn btn-primary"
-            href={profile.links.github}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-          <a
-            className="btn btn-outline"
-            href={profile.links.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
-        </div>
       </div>
     </section>
   )

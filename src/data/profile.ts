@@ -23,4 +23,20 @@ export const profile = {
     github: 'https://github.com/lkritikos',
     linkedin: 'https://linkedin.com/in/lkritikos',
   },
+  /** Headline tech, shown as chips in About. Drawn from real resume skills. */
+  tech: [
+    'TypeScript',
+    'React',
+    'React Native',
+    'RTK Query',
+    'React Hook Form',
+    'MUI',
+    'Vite',
+  ],
 } as const
+
+/** Monogram initials (e.g. "LK") for the nav/footer brand mark + favicon. */
+export const initials = profile.name
+  .split(' ')
+  .map((word) => word[0])
+  .join('')

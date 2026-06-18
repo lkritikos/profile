@@ -13,6 +13,8 @@
 
 import type { Palette } from './palette.ts'
 import { palettes } from './palette.ts'
+import type { Typography } from './typography.ts'
+import { typography } from './typography.ts'
 
 /** Maps each palette key to the CSS custom-property name it compiles to. */
 export const cssVar = {
@@ -57,6 +59,26 @@ export function buildThemeCss(themes: Record<'light' | 'dark', Palette> = palett
   ].join('\n\n')
 }
 
+/**
+ * Render the typography tokens as `:root` declarations. Static (no light/dark
+ * variation), so it compiles to a single block. Emits family vars (`--sans`,
+ * `--heading`, `--mono`) plus, per scale role, `--fs-/--fw-/--lh-/--ls-<role>`.
+ */
+export function buildTypographyCss(type: Typography = typography): string {
+  const lines = [
+    `  --sans: ${type.fonts.sans};`,
+    `  --heading: ${type.fonts.heading};`,
+    `  --mono: ${type.fonts.mono};`,
+  ]
+  for (const [role, style] of Object.entries(type.scale)) {
+    lines.push(`  --fs-${role}: ${style.size};`)
+    if (style.weight != null) lines.push(`  --fw-${role}: ${style.weight};`)
+    if (style.leading != null) lines.push(`  --lh-${role}: ${style.leading};`)
+    if (style.tracking != null) lines.push(`  --ls-${role}: ${style.tracking};`)
+  }
+  return `:root {\n${lines.join('\n')}\n}`
+}
+
 const STYLE_ID = 'theme-vars'
 
 /**
@@ -71,5 +93,5 @@ export function installTheme(themes: Record<'light' | 'dark', Palette> = palette
     style.id = STYLE_ID
     document.head.appendChild(style)
   }
-  style.textContent = buildThemeCss(themes)
+  style.textContent = [buildTypographyCss(), buildThemeCss(themes)].join('\n\n')
 }

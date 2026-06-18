@@ -1,30 +1,24 @@
 /*
- * Global reset, typography, and layout primitives.
+ * Global reset and layout primitives.
  *
- * Color tokens (--text, --bg, --accent, …) are NOT defined here — they are
- * compiled from src/theme/palette.ts by createTheme.ts and injected as a
- * <style id="theme-vars"> at startup. Style with var(--token), never raw hex.
+ * Design tokens are NOT defined here — colors compile from src/theme/palette.ts
+ * and typography from src/theme/typography.ts (both via createTheme.ts, injected
+ * as <style id="theme-vars"> at startup). Style with var(--token); the fallbacks
+ * below only cover the brief moment before that style is installed.
  */
 
 :root {
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
+  font-family: var(--sans, system-ui, sans-serif);
+  font-size: var(--fs-body, 1.125rem);
+  line-height: var(--lh-body, 1.6);
+  letter-spacing: var(--ls-body, 0.01em);
   color-scheme: light dark;
-  /* Fallbacks cover the brief moment before theme-vars is installed. */
   color: var(--text, #33474a);
   background: var(--bg, #ffffff);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
 body {
@@ -45,28 +39,26 @@ body {
 h1,
 h2 {
   font-family: var(--heading);
-  font-weight: 500;
   color: var(--text-strong);
 }
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: var(--ls-h1);
   margin: 32px 0;
   @media (max-width: 1024px) {
-    font-size: 36px;
     margin: 20px 0;
   }
 }
 
 h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);
+  margin: 0 0 16px;
 }
 
 p {
@@ -88,6 +80,19 @@ a:hover {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+/* Visually hidden, but available to screen readers (skip-link, footer heading). */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 code {

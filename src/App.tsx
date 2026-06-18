@@ -3,7 +3,7 @@ import { Nav } from './components/Nav.tsx'
 import { Hero } from './components/Hero.tsx'
 import { About } from './components/About.tsx'
 import { Projects } from './components/Projects.tsx'
-import { Contact } from './components/Contact.tsx'
+import { Footer } from './components/Footer.tsx'
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <About />
         <Projects />
       </main>
-      <Contact />
+      <Footer />
     </>
   )
 }
