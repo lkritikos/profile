@@ -11,7 +11,7 @@ export function Projects() {
   const hasProjects = projects.length > 0
   return (
     <section id="projects" className="section">
-      <div className="container">
+      <div className="container" data-reveal>
         <h2 className="section-title">Projects</h2>
         {hasProjects ? (
           <ul className="project-grid" aria-label="Projects">

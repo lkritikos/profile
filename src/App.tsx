@@ -4,8 +4,10 @@ import { Hero } from './components/Hero.tsx'
 import { About } from './components/About.tsx'
 import { Projects } from './components/Projects.tsx'
 import { Footer } from './components/Footer.tsx'
+import { useScrollReveal } from './hooks/useScrollReveal.ts'
 
 function App() {
+  useScrollReveal()
   return (
     <>
       <a className="skip-link" href="#main">

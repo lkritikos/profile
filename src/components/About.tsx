@@ -7,7 +7,7 @@ import { profile } from '../data/profile.ts'
 export function About() {
   return (
     <section id="about" className="section section--alt">
-      <div className="container">
+      <div className="container" data-reveal>
         <h2 className="section-title">About</h2>
         <p>
           Software engineer based in the {profile.location}, with nine years

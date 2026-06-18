@@ -9,10 +9,16 @@ export function Hero() {
   return (
     <section id="top" className="hero">
       <div className="container">
-        <p className="pill">{profile.currently}</p>
-        <h1>{profile.name}</h1>
-        <p className="hero-tagline">{profile.tagline}</p>
-        <p className="hero-intro">{profile.intro}</p>
+        <p className="pill" data-reveal>
+          {profile.currently}
+        </p>
+        <h1 data-reveal>{profile.name}</h1>
+        <p className="hero-tagline" data-reveal>
+          {profile.tagline}
+        </p>
+        <p className="hero-intro" data-reveal>
+          {profile.intro}
+        </p>
       </div>
     </section>
   )
