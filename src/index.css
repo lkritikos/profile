@@ -31,14 +31,15 @@ body {
   margin: 0;
 }
 
+/*
+ * Full-bleed shell: #root spans the viewport so section backgrounds reach the
+ * edges. Content width is capped per-section by `.container` (see App.css).
+ */
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
+  width: 100%;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
 h1,
