@@ -64,7 +64,6 @@ html {
   transition:
     opacity 0.55s ease,
     transform 0.55s ease;
-  will-change: opacity, transform;
 }
 
 .reveal-ready [data-reveal].is-visible {
@@ -214,6 +213,44 @@ html {
 
 .hero .container {
   position: relative;
+  /* Sit above the decorative flourish (which is earlier in the DOM and
+   * unpositioned in the stacking order). */
+  z-index: 1;
+}
+
+/* Decorative tree flourish: anchored to the hero's right edge, scaled to the
+ * hero height, sitting behind the content (clipped by the hero's overflow).
+ * Opacities are set here so the silhouette and the hidden cat can be dialed
+ * without touching the SVG geometry. */
+.flourish {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: clamp(170px, 22vw, 250px);
+  color: var(--accent);
+  pointer-events: none;
+}
+
+.flourish svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.flourish-web {
+  opacity: 0.16;
+}
+
+/* The spider reads a little stronger than the web so it rewards a close look. */
+.flourish-spider {
+  opacity: 0.34;
+}
+
+/* Hide on narrow screens so it never crowds the hero text. */
+@media (max-width: 720px) {
+  .flourish {
+    display: none;
+  }
 }
 
 .hero h1 {

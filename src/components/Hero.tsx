@@ -1,4 +1,5 @@
 import { profile } from '../data/profile.ts'
+import { Flourish } from './Flourish.tsx'
 
 /**
  * Landing section: name, tagline, intro, and the "Currently" status pill.
@@ -8,6 +9,7 @@ import { profile } from '../data/profile.ts'
 export function Hero() {
   return (
     <section id="top" className="hero">
+      <Flourish />
       <div className="container">
         <p className="pill" data-reveal>
           {profile.currently}
