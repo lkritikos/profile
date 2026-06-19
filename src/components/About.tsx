@@ -12,9 +12,9 @@ export function About() {
         <p>
           I&rsquo;m a software engineer based in the {profile.location}, with nine
           years building and maintaining web and mobile applications. My focus is
-          frontend architecture in React and TypeScript &mdash; and I&rsquo;m at my
-          best where an established codebase needs to evolve without bringing
-          feature work to a halt.
+          frontend architecture in React and TypeScript &mdash; building accessible,
+          maintainable interfaces &mdash; and I&rsquo;m at my best where an established
+          codebase needs to evolve without bringing feature work to a halt.
         </p>
         <p>
           At Pinnacol Assurance I worked on frontend modernization across several
