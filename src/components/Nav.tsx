@@ -32,7 +32,7 @@ export function Nav() {
             href={profile.links.github}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="GitHub"
+            aria-label="GitHub (opens in new tab)"
           >
             <GitHubIcon />
           </a>
@@ -41,7 +41,7 @@ export function Nav() {
             href={profile.links.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="LinkedIn"
+            aria-label="LinkedIn (opens in new tab)"
           >
             <LinkedInIcon />
           </a>

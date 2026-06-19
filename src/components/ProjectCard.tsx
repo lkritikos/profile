@@ -15,6 +15,7 @@ export function ProjectCard({ project }: { project: Project }) {
         {link ? (
           <a href={link} target="_blank" rel="noopener noreferrer">
             {title}
+            <span className="sr-only"> (opens in new tab)</span>
           </a>
         ) : (
           title
