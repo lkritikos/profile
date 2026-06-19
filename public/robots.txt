@@ -1,0 +1,5 @@
+# Personal profile site — everything is public and indexable.
+User-agent: *
+Allow: /
+
+Sitemap: https://profile.lkritikos.workers.dev/sitemap.xml
