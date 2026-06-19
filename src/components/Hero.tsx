@@ -1,5 +1,5 @@
-import { profile } from '../data/profile.ts'
-import { Flourish } from './Flourish.tsx'
+import { profile } from '../data/profile.ts';
+import { Flourish } from './Flourish.tsx';
 
 /**
  * Landing section: name, tagline, intro, and the "Currently" status pill.
@@ -23,5 +23,5 @@ export function Hero() {
         </p>
       </div>
     </section>
-  )
+  );
 }

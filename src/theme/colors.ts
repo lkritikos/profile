@@ -21,7 +21,7 @@ export const teal = {
   800: '#115e59',
   900: '#134e4a',
   950: '#042f2e',
-} as const
+} as const;
 
 /** Slate — teal-tinted neutrals for text, surfaces, and borders. */
 export const slate = {
@@ -36,15 +36,15 @@ export const slate = {
   700: '#213330',
   800: '#131e1c',
   900: '#0c1413',
-} as const
+} as const;
 
-export const black = '#000000'
+export const black = '#000000';
 
 /** Return an `rgba()` string for a `#rrggbb` hex at the given alpha (0–1). */
 export function alpha(hex: string, a: number): string {
-  const n = parseInt(hex.slice(1), 16)
-  const r = (n >> 16) & 255
-  const g = (n >> 8) & 255
-  const b = n & 255
-  return `rgba(${r}, ${g}, ${b}, ${a})`
+  const n = parseInt(hex.slice(1), 16);
+  const r = (n >> 16) & 255;
+  const g = (n >> 8) & 255;
+  const b = n & 255;
+  return `rgba(${r}, ${g}, ${b}, ${a})`;
 }

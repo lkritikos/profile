@@ -37,10 +37,10 @@ export const profile = {
     'MUI',
     'Vite',
   ],
-} as const
+} as const;
 
 /** Monogram initials (e.g. "LK") for the nav/footer brand mark + favicon. */
 export const initials = profile.name
   .split(' ')
   .map((word) => word[0])
-  .join('')
+  .join('');

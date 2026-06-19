@@ -1,4 +1,4 @@
-import { profile } from '../data/profile.ts'
+import { profile } from '../data/profile.ts';
 
 /**
  * About section — first-person prose drawn from the résumé, plus a tech-stack
@@ -40,5 +40,5 @@ export function About() {
         </ul>
       </div>
     </section>
-  )
+  );
 }

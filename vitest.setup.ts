@@ -8,18 +8,18 @@
  *   `useTheme` relies on. Defaults to light; `setMatchMedia()` lets a test
  *   simulate a dark OS preference.
  */
-import { afterEach, expect } from 'vitest'
-import { cleanup } from '@testing-library/react'
-import '@testing-library/jest-dom/vitest'
-import * as axeMatchers from 'vitest-axe/matchers'
+import { afterEach, expect } from 'vitest';
+import { cleanup } from '@testing-library/react';
+import '@testing-library/jest-dom/vitest';
+import * as axeMatchers from 'vitest-axe/matchers';
 
 // Matcher types are augmented in src/vitest-axe.d.ts (vitest-axe's own
 // extend-expect targets the legacy Vi namespace that Vitest 4 removed).
-expect.extend(axeMatchers)
+expect.extend(axeMatchers);
 
 afterEach(() => {
-  cleanup()
-})
+  cleanup();
+});
 
 /** Install a `matchMedia` stub; `dark` controls the prefers-color-scheme result. */
 export function setMatchMedia(dark: boolean): void {
@@ -32,13 +32,13 @@ export function setMatchMedia(dark: boolean): void {
     addListener: () => {},
     removeListener: () => {},
     dispatchEvent: () => false,
-  })
+  });
 }
 
-setMatchMedia(false)
+setMatchMedia(false);
 
 // axe-core's color-contrast rule probes <canvas>, which jsdom can't render
 // (it would emit a "getContext not implemented" warning and the rule no-ops
 // anyway). Stub it to keep test output clean.
-HTMLCanvasElement.prototype.getContext = () => null
+HTMLCanvasElement.prototype.getContext = () => null;
 

@@ -84,5 +84,5 @@ export function Flourish() {
         </g>
       </svg>
     </div>
-  )
+  );
 }

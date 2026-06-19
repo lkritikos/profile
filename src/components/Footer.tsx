@@ -1,11 +1,11 @@
-import { profile } from '../data/profile.ts'
+import { profile } from '../data/profile.ts';
 
 /**
  * Minimal footer bar. Social links live in the sticky header, so the footer is
  * deliberately a single line: copyright, location, and the stack it's built on.
  */
 export function Footer() {
-  const year = new Date().getFullYear()
+  const year = new Date().getFullYear();
   return (
     <footer className="footer">
       <div className="container footer-inner">
@@ -17,5 +17,5 @@ export function Footer() {
         </span>
       </div>
     </footer>
-  )
+  );
 }

@@ -16,7 +16,7 @@ export type Project = {
   link?: string
   /** Short tech/topic tags, rendered as chips. */
   tags: readonly string[]
-}
+};
 
 export const projects: readonly Project[] = [
   {
@@ -28,4 +28,4 @@ export const projects: readonly Project[] = [
     link: 'https://github.com/lkritikos/profile',
     tags: ['React', 'TypeScript', 'Cloudflare Workers', 'Vite'],
   },
-]
+];

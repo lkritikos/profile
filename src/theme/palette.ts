@@ -12,9 +12,9 @@
  * and links against their background); a final contrast pass happens in Step 6.
  */
 
-import { alpha, black, slate, teal } from './colors.ts'
+import { alpha, black, slate, teal } from './colors.ts';
 
-export type ThemeName = 'light' | 'dark'
+export type ThemeName = 'light' | 'dark';
 
 export interface Palette {
   /** Body text. */
@@ -80,4 +80,4 @@ export const palettes: Record<ThemeName, Palette> = {
     shadow: `${alpha(black, 0.45)} 0 10px 15px -3px, ${alpha(black, 0.3)} 0 4px 6px -2px`,
     codeBg: slate[800],
   },
-}
+};

@@ -11,10 +11,10 @@
  *     (wired up by the toggle in Step 2)
  */
 
-import type { Palette } from './palette.ts'
-import { palettes } from './palette.ts'
-import type { Typography } from './typography.ts'
-import { typography } from './typography.ts'
+import type { Palette } from './palette.ts';
+import { palettes } from './palette.ts';
+import type { Typography } from './typography.ts';
+import { typography } from './typography.ts';
 
 /** Maps each palette key to the CSS custom-property name it compiles to. */
 export const cssVar = {
@@ -32,15 +32,15 @@ export const cssVar = {
   focusRing: '--focus-ring',
   shadow: '--shadow',
   codeBg: '--code-bg',
-} satisfies Record<keyof Palette, string>
+} satisfies Record<keyof Palette, string>;
 
-const paletteKeys = Object.keys(cssVar) as (keyof Palette)[]
+const paletteKeys = Object.keys(cssVar) as (keyof Palette)[];
 
 /** Render a palette as `--token: value;` declaration lines. */
 function declarations(palette: Palette): string {
   return paletteKeys
     .map((key) => `  ${cssVar[key]}: ${palette[key]};`)
-    .join('\n')
+    .join('\n');
 }
 
 /**
@@ -49,14 +49,14 @@ function declarations(palette: Palette): string {
  * explicitly chosen light; explicit `data-theme` choices always win.
  */
 export function buildThemeCss(themes: Record<'light' | 'dark', Palette> = palettes): string {
-  const light = declarations(themes.light)
-  const dark = declarations(themes.dark)
+  const light = declarations(themes.light);
+  const dark = declarations(themes.dark);
   return [
     `:root {\n${light}\n}`,
     `@media (prefers-color-scheme: dark) {\n  :root:not([data-theme="light"]) {\n${dark}\n  }\n}`,
     `:root[data-theme="light"] {\n${light}\n}`,
     `:root[data-theme="dark"] {\n${dark}\n}`,
-  ].join('\n\n')
+  ].join('\n\n');
 }
 
 /**
@@ -69,29 +69,29 @@ export function buildTypographyCss(type: Typography = typography): string {
     `  --sans: ${type.fonts.sans};`,
     `  --heading: ${type.fonts.heading};`,
     `  --mono: ${type.fonts.mono};`,
-  ]
+  ];
   for (const [role, style] of Object.entries(type.scale)) {
-    lines.push(`  --fs-${role}: ${style.size};`)
-    if (style.weight != null) lines.push(`  --fw-${role}: ${style.weight};`)
-    if (style.leading != null) lines.push(`  --lh-${role}: ${style.leading};`)
-    if (style.tracking != null) lines.push(`  --ls-${role}: ${style.tracking};`)
+    lines.push(`  --fs-${role}: ${style.size};`);
+    if (style.weight != null) lines.push(`  --fw-${role}: ${style.weight};`);
+    if (style.leading != null) lines.push(`  --lh-${role}: ${style.leading};`);
+    if (style.tracking != null) lines.push(`  --ls-${role}: ${style.tracking};`);
   }
-  return `:root {\n${lines.join('\n')}\n}`
+  return `:root {\n${lines.join('\n')}\n}`;
 }
 
-const STYLE_ID = 'theme-vars'
+const STYLE_ID = 'theme-vars';
 
 /**
  * Install (or refresh) the theme CSS variables in `<head>`. Idempotent — safe
  * to call on startup and again if the palette ever changes at runtime.
  */
 export function installTheme(themes: Record<'light' | 'dark', Palette> = palettes): void {
-  if (typeof document === 'undefined') return
-  let style = document.getElementById(STYLE_ID) as HTMLStyleElement | null
+  if (typeof document === 'undefined') return;
+  let style = document.getElementById(STYLE_ID) as HTMLStyleElement | null;
   if (!style) {
-    style = document.createElement('style')
-    style.id = STYLE_ID
-    document.head.appendChild(style)
+    style = document.createElement('style');
+    style.id = STYLE_ID;
+    document.head.appendChild(style);
   }
-  style.textContent = [buildTypographyCss(), buildThemeCss(themes)].join('\n\n')
+  style.textContent = [buildTypographyCss(), buildThemeCss(themes)].join('\n\n');
 }

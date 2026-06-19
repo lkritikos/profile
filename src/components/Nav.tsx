@@ -1,6 +1,6 @@
-import { ThemeToggle } from './ThemeToggle.tsx'
-import { GitHubIcon, LinkedInIcon } from './icons.tsx'
-import { profile, initials } from '../data/profile.ts'
+import { ThemeToggle } from './ThemeToggle.tsx';
+import { GitHubIcon, LinkedInIcon } from './icons.tsx';
+import { profile, initials } from '../data/profile.ts';
 
 /**
  * Sticky banner: monogram brand, in-page anchor links, and the right cluster
@@ -49,5 +49,5 @@ export function Nav() {
         </div>
       </div>
     </header>
-  )
+  );
 }

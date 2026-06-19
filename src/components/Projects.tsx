@@ -1,5 +1,5 @@
-import { projects } from '../data/projects.ts'
-import { ProjectCard } from './ProjectCard.tsx'
+import { projects } from '../data/projects.ts';
+import { ProjectCard } from './ProjectCard.tsx';
 
 /**
  * Projects section — data-driven from `src/data/projects.ts`. A populated
@@ -8,7 +8,7 @@ import { ProjectCard } from './ProjectCard.tsx'
  * is a one-object append to the data file.
  */
 export function Projects() {
-  const hasProjects = projects.length > 0
+  const hasProjects = projects.length > 0;
   return (
     <section id="projects" className="section">
       <div className="container" data-reveal>
@@ -32,5 +32,5 @@ export function Projects() {
         )}
       </div>
     </section>
-  )
+  );
 }

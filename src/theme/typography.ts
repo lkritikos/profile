@@ -73,4 +73,4 @@ export const typography: Typography = {
       tracking: '0.01em',
     },
   },
-}
+};

@@ -1,4 +1,4 @@
-import type { Project } from '../data/projects.ts'
+import type { Project } from '../data/projects.ts';
 
 /**
  * A single project as a card: title, description, and tag chips reusing the
@@ -7,7 +7,7 @@ import type { Project } from '../data/projects.ts'
  * arrow signals that the card opens externally.
  */
 export function ProjectCard({ project }: { project: Project }) {
-  const { title, description, link, tags } = project
+  const { title, description, link, tags } = project;
   return (
     <article className="card project-card">
       {link && <ArrowIcon />}
@@ -32,7 +32,7 @@ export function ProjectCard({ project }: { project: Project }) {
         </ul>
       )}
     </article>
-  )
+  );
 }
 
 /** Decorative corner affordance for linked cards; the link carries the name. */
@@ -52,5 +52,5 @@ function ArrowIcon() {
     >
       <path d="M7 17 17 7M9 7h8v8" />
     </svg>
-  )
+  );
 }

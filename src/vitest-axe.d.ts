@@ -8,7 +8,7 @@
  * `Matchers` rather than `Assertion` to avoid colliding with jest-dom's own
  * `Assertion` augmentation. Runtime registration lives in vitest.setup.ts.
  */
-import 'vitest'
+import 'vitest';
 
 declare module 'vitest' {
   // The generic mirrors the real `Matchers<T = any>` so this augmentation
