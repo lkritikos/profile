@@ -169,12 +169,15 @@ html {
 }
 
 @media (max-width: 600px) {
+  /* Narrower gutters on phones so content (and project cards) get more width,
+   * and so the nav brand mark lines up with the section headings. */
+  .container {
+    padding-inline: 16px;
+  }
   /* Tighten the nav row so the full action cluster (GitHub + LinkedIn +
-   * theme toggle) fits without the last item overflowing off-screen.
-   * Scoped to the nav (.nav-inner) so section gutters are unaffected. */
+   * theme toggle) fits without the last item overflowing off-screen. */
   .nav-inner {
     gap: 12px;
-    padding-inline: 16px;
   }
   .nav-links {
     gap: 14px;
