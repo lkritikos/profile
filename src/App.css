@@ -169,9 +169,24 @@ html {
 }
 
 @media (max-width: 600px) {
+  /* Tighten the nav row so the full action cluster (GitHub + LinkedIn +
+   * theme toggle) fits without the last item overflowing off-screen.
+   * Scoped to the nav (.nav-inner) so section gutters are unaffected. */
+  .nav-inner {
+    gap: 12px;
+    padding-inline: 16px;
+  }
   .nav-links {
     gap: 14px;
     font-size: 15px;
+  }
+  .nav-actions {
+    gap: 2px;
+  }
+  .nav-icon,
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
   }
 }
 
