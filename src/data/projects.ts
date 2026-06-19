@@ -18,4 +18,14 @@ export type Project = {
   tags: readonly string[]
 }
 
-export const projects: readonly Project[] = []
+export const projects: readonly Project[] = [
+  {
+    title: 'This site',
+    description:
+      'The site you’re reading. Built with React 19 and TypeScript on a typed ' +
+      'design-token theme system with light/dark support, and deployed to the edge ' +
+      'on Cloudflare Workers. Source is on GitHub.',
+    link: 'https://github.com/lkritikos/profile',
+    tags: ['React', 'TypeScript', 'Cloudflare Workers', 'Vite'],
+  },
+]
