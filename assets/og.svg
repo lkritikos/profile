@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!--
+    Open Graph share card (1200x630). Source of truth; rasterized to
+    public/og.png by assets/build-images.sh (qlmanage + sips).
+
+    Echoes the live site: dark palette background, the hero's spider-web
+    flourish reused in the top-right corner, the teal "LK" monogram tile, and
+    Space Grotesk / JetBrains Mono type loaded from assets/fonts. A faint
+    Cheshire grin sits lower-right as a quiet easter egg (a grin without a cat).
+  -->
+  <defs>
+    <style>
+      @font-face {
+        font-family: 'Space Grotesk'; font-weight: 700;
+        src: url(fonts/space-grotesk-700.woff2) format('woff2');
+      }
+      @font-face {
+        font-family: 'JetBrains Mono'; font-weight: 500;
+        src: url(fonts/jetbrains-mono-500.woff2) format('woff2');
+      }
+      .name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+      .mono { font-family: 'JetBrains Mono', monospace; font-weight: 500; }
+    </style>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0e1716"/>
+      <stop offset="1" stop-color="#081110"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.28" cy="0.42" r="0.5">
+      <stop offset="0" stop-color="#14b8a6" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#14b8a6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Spider-web flourish, top-right corner (hub at 1200,0). Geometry mirrors
+       src/components/Flourish.tsx, scaled 1.6x from its 240-unit grid. -->
+  <g transform="translate(816,0) scale(1.6)" fill="none" stroke="#2dd4bf"
+     stroke-linecap="round" stroke-linejoin="round">
+    <g opacity="0.22">
+      <g stroke-width="1.3">
+        <line x1="240" y1="0" x2="10" y2="0"/>
+        <line x1="240" y1="0" x2="27" y2="88"/>
+        <line x1="240" y1="0" x2="77" y2="163"/>
+        <line x1="240" y1="0" x2="152" y2="213"/>
+        <line x1="240" y1="0" x2="240" y2="230"/>
+      </g>
+      <path d="M10,0 Q45,39 27,88 Q75,110 77,163 Q130,165 152,213 Q201,195 240,230" stroke-width="1.2"/>
+      <g stroke-width="1">
+        <path d="M170,0 Q185,11 175,27 Q193,32 191,50 Q209,47 213,65 Q229,55 240,70"/>
+        <path d="M105,0 Q133,21 115,52 Q150,60 145,95 Q180,90 188,125 Q219,107 240,135"/>
+        <path d="M40,0 Q82,32 55,77 Q106,89 99,141 Q151,134 163,185 Q208,158 240,200"/>
+      </g>
+    </g>
+    <!-- spider, rappelling -->
+    <g opacity="0.4">
+      <line x1="115" y1="52" x2="115" y2="151" stroke-width="1.1"/>
+      <g stroke-width="1.4">
+        <path d="M113,170 Q102,164 95,167"/>
+        <path d="M113,172 Q100,171 94,175"/>
+        <path d="M113,174 Q101,178 96,183"/>
+        <path d="M114,176 Q104,183 99,189"/>
+        <path d="M117,170 Q128,164 135,167"/>
+        <path d="M117,172 Q130,171 136,175"/>
+        <path d="M117,174 Q129,178 134,183"/>
+        <path d="M116,176 Q126,183 131,189"/>
+      </g>
+      <g fill="#2dd4bf" stroke="none">
+        <ellipse cx="115" cy="160" rx="6.5" ry="9"/>
+        <circle cx="115" cy="172" r="4"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- LK monogram tile (matches the favicon / nav brand). -->
+  <g transform="translate(90,96)">
+    <rect width="96" height="96" rx="20" fill="#0d9488"/>
+    <g transform="scale(1.5)" fill="none" stroke="#ffffff" stroke-width="7"
+       stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 18 V46 H28"/>
+      <path d="M37 18 V46 M37 32 L48 18 M37 32 L49 46"/>
+    </g>
+  </g>
+
+  <!-- Name + accent bar + role label. -->
+  <text class="name" x="90" y="350" font-size="96" fill="#f4f8f7">Lia Kritikos</text>
+  <rect x="93" y="382" width="72" height="6" rx="3" fill="#14b8a6"/>
+  <text class="mono" x="93" y="438" font-size="27" letter-spacing="4" fill="#5eead4">SOFTWARE ENGINEER</text>
+  <text class="mono" x="93" y="484" font-size="22" letter-spacing="1.5" fill="#8aa39e">TypeScript &#183; React &#183; frontend</text>
+
+  <!-- handle, bottom-left -->
+  <text class="mono" x="93" y="566" font-size="21" letter-spacing="1" fill="#5d716d">github.com/lkritikos</text>
+</svg>

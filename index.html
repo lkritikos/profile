@@ -3,11 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>profile</title>
+    <title>Lia Kritikos — Software Engineer</title>
+    <meta
+      name="description"
+      content="Lia Kritikos — frontend software engineer specializing in TypeScript & React, with 9 years building and modernizing web and mobile apps."
+    />
+    <meta name="author" content="Lia Kritikos" />
+    <!-- Tint mobile browser chrome to match the page bg in each scheme
+         (slate[0] light / slate[900] dark from the palette). -->
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c1413" />
+    <link rel="canonical" href="https://profile.lkritikos.workers.dev/" />
+
+    <!-- Open Graph: link previews on LinkedIn/Slack/Discord/iMessage.
+         No Twitter Card tags by decision (no X/Twitter presence).
+         og.jpg is generated from assets/og.svg via assets/build-images.sh. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lia Kritikos" />
+    <meta property="og:title" content="Lia Kritikos — Software Engineer" />
+    <meta
+      property="og:description"
+      content="Frontend software engineer specializing in TypeScript & React, with 9 years building and modernizing web and mobile apps."
+    />
+    <meta property="og:url" content="https://profile.lkritikos.workers.dev/" />
+    <meta property="og:image" content="https://profile.lkritikos.workers.dev/og.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta
+      property="og:image:alt"
+      content="Lia Kritikos — Software Engineer, with an LK monogram."
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Fonts: Space Grotesk (headings), Inter (body), JetBrains Mono (labels).
+         TODO(step 5): self-host these woff2 on the edge for perf + privacy. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Apply a stored explicit theme choice before first paint to avoid a
+      // flash. No stored choice → leave it to prefers-color-scheme.
+      (function () {
+        try {
+          var t = localStorage.getItem('theme')
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t)
+          }
+        } catch (e) {}
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- Cloudflare Web Analytics: cookieless, no PII, no consent banner needed.
+         The token is public by design (ships in the HTML). -->
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "98410d37beb6487b99ab9141ee4b7ee3"}'
+    ></script>
   </body>
 </html>

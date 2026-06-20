@@ -1,0 +1,26 @@
+version: 2
+updates:
+  # npm dependencies — group minor/patch into a single weekly PR to keep noise
+  # low; majors still arrive as their own PRs so they get a closer look.
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
+
+  # Keep the GitHub Actions used in ci.yml current, same grouping.
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      actions:
+        update-types:
+          - minor
+          - patch
