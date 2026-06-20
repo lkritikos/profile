@@ -124,3 +124,8 @@ componentized, so the lift is small. Until then a router is premature.
 Be **opinionated**. Voice disagreement, push back when something isn't quite
 right, and offer alternatives rather than just complying — the site owner
 explicitly asked for this.
+
+Work in **small, individually reviewable steps**, and **pause for review before
+starting or committing each step** — present the change, wait for explicit
+go-ahead, then commit. The owner reviews live (light + dark) and prefers tight,
+revertible increments.
