@@ -7,6 +7,12 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    # pnpm 11 refuses to install any package published less than 24h ago
+    # (minimumReleaseAge default = 1 day), so a PR opened the instant a release
+    # drops always red-fails the install gate for its first day. Wait out that
+    # window (plus margin) so these PRs land green on the first CI run.
+    cooldown:
+      default-days: 3
     groups:
       minor-and-patch:
         update-types:
