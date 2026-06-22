@@ -1,0 +1,22 @@
+name: Checks
+description: Install dependencies and run lint, test, and build (the CI gate).
+
+# Composite action — the single source of truth for the verification steps, reused
+# by ci.yml (on PRs) and deploy.yml (pre-deploy on main). The caller must run
+# actions/checkout before invoking this, since a local action needs the repo present.
+runs:
+  using: composite
+  steps:
+    - uses: pnpm/action-setup@v6
+    - uses: actions/setup-node@v6
+      with:
+        node-version: 24
+        cache: pnpm
+    - run: pnpm install --frozen-lockfile
+      shell: bash
+    - run: pnpm lint
+      shell: bash
+    - run: pnpm test
+      shell: bash
+    - run: pnpm build
+      shell: bash
