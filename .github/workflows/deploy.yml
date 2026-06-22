@@ -1,0 +1,29 @@
+name: Deploy
+
+# Runs only on pushes to main (i.e. after a PR merges). Re-runs the full checks
+# gate, then deploys to Cloudflare Workers. Because it isn't a pull_request
+# workflow, it never registers as a check on PRs.
+on:
+  push:
+    branches: [main]
+
+# Never interrupt an in-flight deploy.
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+# Least privilege: deploy authenticates via secrets, not the workflow token.
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/checks # gate: lint + test + build (produces dist/)
+      - uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy

@@ -1,18 +1,16 @@
 name: CI
 
-# Run the same checks on every PR and on pushes to main; deploy only from main
-# once those checks pass.
+# Verify every PR. The same gate re-runs pre-deploy in deploy.yml on main, so
+# deploy lives in its own workflow and never shows up as a (skipped) PR check.
 on:
   pull_request:
-  push:
-    branches: [main]
 
-# Cancel superseded runs on a branch/PR, but never interrupt a main deploy.
+# Supersede stale runs on a PR as new commits land.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  cancel-in-progress: true
 
-# Least privilege: jobs only need to read the repo (deploy auths via secrets).
+# Least privilege: the checks only need to read the repo.
 permissions:
   contents: read
 
@@ -21,31 +19,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm lint
-      - run: pnpm test
-      - run: pnpm build
-
-  deploy:
-    needs: checks
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm build
-      - uses: cloudflare/wrangler-action@v4
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy
+      - uses: ./.github/actions/checks
