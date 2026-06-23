@@ -31,6 +31,17 @@ CI deploys on merge to `main`. To deploy manually:
 pnpm deploy       # build + wrangler deploy
 ```
 
+## Preview a branch
+
+```sh
+pnpm demo         # deploy the current branch to a shareable preview URL
+```
+
+Builds and gates the current branch, then publishes a Cloudflare Worker preview at a
+stable `<branch>-profile.lkritikos.workers.dev` (production untouched). Requires the
+GitHub CLI (`gh`) installed + authenticated and the branch pushed. Blocks ~1–2 min,
+then prints and opens the live link (`--no-open` to skip opening). Refuses on `main`.
+
 ## Add a project
 
 Append one object to the `projects` array in
