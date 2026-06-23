@@ -19,7 +19,9 @@ updates:
           - minor
           - patch
 
-  # Keep the GitHub Actions used in ci.yml current, same grouping.
+  # Keep the GitHub Actions used in ci.yml current. Group ALL updates, including
+  # majors, into one PR: separate major bumps edit adjacent `uses:` lines in
+  # ci.yml and conflict with each other, forcing one-at-a-time rebases.
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
@@ -28,5 +30,6 @@ updates:
     groups:
       actions:
         update-types:
+          - major
           - minor
           - patch
